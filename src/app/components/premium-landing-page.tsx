@@ -261,6 +261,9 @@ export default function PremiumLandingPage() {
 						desc='Shared learning with individual correction. High signal, lower fatigue, strong retention.'
 					/>
 				</div>
+				<div className='mt-8'>
+					<CTAButton href='/training'>Go Deeper on the Training</CTAButton>
+				</div>
 			</Section>
 
 			{/* PRICING */}
@@ -272,10 +275,10 @@ export default function PremiumLandingPage() {
 					</p>
 					<div className='mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4'>
 						{[
-							{ k: 'ASSESSMENT', v: '$140', d: 'Direction first. No guessing.' },
-							{ k: 'COMPETENCY PATH', v: '$960–$1,440', d: '8–12 sessions, transferable calm.' },
-							{ k: 'SMALL GROUP', v: '$60 / session', d: '3–5 people, high attention.' },
-							{ k: 'INTENSIVE', v: '$275', d: '90 minutes, one problem solved.' }
+							{ k: 'ASSESSMENT', v: '$95', d: 'Direction first. No guessing.' },
+							{ k: 'BEGINNER PATH', v: '$800', d: '8 sessions, foundations.' },
+							{ k: 'SMALL GROUP', v: '$60 / session', d: '3–6 people, high attention.' }
+							// { k: 'INTENSIVE', v: '$275', d: '90 minutes, one problem solved.' }
 						].map((x) => (
 							<div key={x.k} className='rounded-2xl border border-white/10 bg-white/[0.03] p-5'>
 								<div className='text-xs tracking-[0.22em] text-neutral-500'>{x.k}</div>

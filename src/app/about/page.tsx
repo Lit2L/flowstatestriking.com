@@ -79,18 +79,16 @@ function ManifestoLine({ title, desc }: { title: string; desc: string }) {
 function PhotoCard({ src, alt, caption }: { src?: string; alt?: string; caption?: string }) {
 	return (
 		<div className='rounded-3xl border border-white/10 bg-white/[0.03] p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]'>
-			<div className='overflow-hidden rounded-2xl border border-white/10 bg-black/40'>
+			<div className='overflow-hidden rounded-2xl border border-white/10 bg-black/10'>
 				{src ? (
 					// eslint-disable-next-line @next/next/no-img-element
 					<img
 						src={src}
 						alt={alt || 'Coach Larry'}
-						className='h-[340px] w-full object-cover md:h-[420px]'
+						className='h-[340px] w-full object-cover md:h-[420px] opacity-90'
 					/>
 				) : (
-					<div className='grid h-[340px] w-full place-items-center text-sm text-white/45 md:h-[420px]'>
-						Add a coach photo here (optional)
-					</div>
+					<div className='grid h-[340px] w-full place-items-center text-sm text-white/45 md:h-[420px]'></div>
 				)}
 			</div>
 			{caption && <div className='mt-3 px-1 text-xs text-white/55'>{caption}</div>}
@@ -105,7 +103,7 @@ export default function AboutPage() {
 
 	// Optional: put a real photo in /public/images/coach-larry.jpg then set:
 	// const COACH_PHOTO = '/images/coach-larry.jpg'
-	const COACH_PHOTO = ''
+	const COACH_PHOTO = '/images/profile.png'
 
 	return (
 		<main className='relative min-h-screen bg-[#070A0F] text-white'>
@@ -317,7 +315,7 @@ export default function AboutPage() {
 							<ul className='space-y-2'>
 								<li>• 22+ years martial arts experience</li>
 								<li>• Boxing, Muay Thai, Kickboxing, Kung Fu</li>
-								<li>• Tournaments, smokers, amateur fights</li>
+								<li>• Muay Thai bouts, Tournaments, Exhibitions & Smokers fights.</li>
 								<li>• About a decade training with a professional fight team</li>
 								<li>• Mentored by Colin Oyama (Team Oyama)</li>
 							</ul>
