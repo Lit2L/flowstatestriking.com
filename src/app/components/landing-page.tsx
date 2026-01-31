@@ -194,10 +194,14 @@ export default function LandingPage() {
 					</p>
 					<div className='mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4'>
 						{[
-							{ k: 'ASSESSMENT', v: '$140', d: 'Direction first. No guessing.' },
-							{ k: 'COMPETENCY PATH', v: '$960–$1,440', d: '8–12 sessions, transferable calm.' },
-							{ k: 'SMALL GROUP', v: '$60 / session', d: '3–5 people, high attention.' },
-							{ k: 'INTENSIVE', v: '$275', d: '90 minutes, one problem solved.' }
+							{ k: 'ASSESSMENT', v: '$95', d: 'Assessment first, Direction first. No guessing.' },
+							{
+								k: 'BEGINNER PATH',
+								v: '$500–$1000',
+								d: '8 sessions, Foundations and competancy.'
+							},
+							{ k: 'SMALL GROUP', v: '$60 / session', d: '3–5 people, high attention.' }
+							// { k: 'INTENSIVE', v: '$275', d: '90 minutes, one problem solved.' }
 						].map((x) => (
 							<div key={x.k} className='rounded-2xl border border-white/10 bg-white/[0.03] p-5'>
 								<div className='text-xs tracking-[0.22em] text-neutral-500'>{x.k}</div>
