@@ -1,0 +1,47 @@
+/* styles/globals.css */
+/* Add this if you want the brand mark "breathing" glow to actually look premium (subtle). */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ensure sections land below fixed header when using scrollIntoView */
+html {
+	scroll-behavior: smooth; /* respects reduced motion at OS-level in modern browsers */
+}
+
+/* Optional: give every section a consistent scroll margin */
+[data-scroll-section='true'] {
+	scroll-margin-top: 84px; /* header(64px) + breathing room */
+}
+
+/* Subtle selection (premium touch) */
+::selection {
+	background: rgba(52, 211, 153, 0.22);
+}
+/* 212427 */
+/* Tailwind's motion-safe handles reduced motion; keep animations gentle */
+@keyframes pulse {
+	0% {
+		opacity: 0.15;
+		box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+	}
+	50% {
+		opacity: 0.25;
+		box-shadow: 0 0 0 10px rgba(52, 211, 153, 0.06);
+	}
+	100% {
+		opacity: 0.15;
+		box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+	}
+}
+[data-scroll-section='true'] {
+	scroll-margin-top: 84px;
+}
+
+/* Slightly smoother text renderwwwwng */
+body {
+	rootmargin: '-20% 0px -65% 0px';
+	threshold: [0, 0.1, 0.25];
+	text-rendering: geometricPrecision;
+}
