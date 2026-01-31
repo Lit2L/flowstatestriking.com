@@ -75,7 +75,7 @@ export default function BookPage() {
 					</div>
 
 					<p className='mt-4 text-xs text-white/55'>
-						Swap these links to your real Calendly / Stripe URLs when ready.
+						{/* Swap these links to your real Calendly / Stripe URLs when ready. */}
 					</p>
 				</div>
 

@@ -116,10 +116,10 @@ export default function PricingPage() {
 
 	// Replace placeholder prices any time.
 	const prices = {
-		assessment: '$___',
-		beginner8: '$___',
-		pack5: '$___',
-		pack10: '$___'
+		assessment: '$95',
+		beginner8: '$800',
+		pack5: '$500',
+		pack10: '$1000'
 	}
 
 	return (
@@ -372,13 +372,10 @@ export default function PricingPage() {
 							q='What if I’m not sure what to buy?'
 							a='Start with an assessment. You’ll leave with clarity and a recommendation.'
 						/>
-						<FAQ
-							q='Cancellation / reschedule policy?'
-							a='Add your policy here (ex: 24 hours notice). Keep it short and firm.'
-						/>
+						<FAQ q='Cancellation / reschedule policy?' a='24 hours notice.' />
 						<FAQ
 							q='Do you train kids/teens?'
-							a='If yes: add a short line and link to the kids page. If no: remove this item.'
+							a='Yes. Kids/teens would benefit greatly from this type of training.'
 						/>
 					</div>
 				</div>

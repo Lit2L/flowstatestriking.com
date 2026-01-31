@@ -125,9 +125,7 @@ export default function MethodPage() {
 							<SecondaryButton href='/about'>Meet Coach Larry</SecondaryButton>
 						</div>
 
-						<p className='mt-4 text-xs text-white/55'>
-							Structure • Position • Timing — governance, not memorization
-						</p>
+						<p className='mt-4 text-xs text-white/55'>Structure • Position • Timing — Governance</p>
 					</div>
 				</div>
 			</section>
