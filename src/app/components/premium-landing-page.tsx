@@ -178,9 +178,7 @@ export default function PremiumLandingPage() {
 								</div>
 
 								<div className='p-5'>
-									<p className='text-sm text-neutral-300'>
-										“Speed covers mistakes. Structure removes them.”
-									</p>
+									<p className='text-sm text-neutral-300'>“Fighting is a dance.”</p>
 									<p className='mt-2 text-xs text-neutral-500 tracking-[0.16em]'>
 										FLOW STATE PRINCIPLE
 									</p>
@@ -197,18 +195,18 @@ export default function PremiumLandingPage() {
 			<Section
 				id='reframe'
 				eyebrow='Why most people feel rushed'
-				title='Urgency isn’t a personality. It’s a structure problem.'
+				title='Calm comes from structure and position.'
 			>
 				<div className='grid md:grid-cols-3 gap-6'>
 					<Card
 						title='Fast feels busy'
 						meta='OBSERVATION'
-						desc='When structure and distance are inconsistent, you spend speed to correct mistakes. You feel rushed even when you’re athletic.'
+						desc='When structure and distance are inconsistent, you spend speed and energy to compensate for mistakes. You feel rushed even when you’re athletic.'
 					/>
 					<Card
 						title='Position reduces motion'
 						meta='PRINCIPLE'
-						desc='Shorter distance to travel means fewer emergencies. You’re not reacting late—you’re already there.'
+						desc='Shorter distance creates cleaner entries and more precise strikes — without forcing speed.'
 					/>
 					<Card
 						title='Calm is trained'
@@ -251,9 +249,10 @@ export default function PremiumLandingPage() {
 						desc='We evaluate structure, distance, and decision-making. You leave with clarity and a recommended path.'
 					/>
 					<Card
-						title='Competency Path'
+						title='Beginners Path'
 						meta='8–12 SESSIONS'
-						desc='Designed to make you calm and capable anywhere—without relying on speed or toughness.'
+						// desc='Designed to make you calm and capable anywhere—without relying on speed or toughness.'
+						desc='Build structure, balance, and control so you can walk into any boxing or kickboxing gym and train confidently.'
 					/>
 					<Card
 						title='Small Group Training'

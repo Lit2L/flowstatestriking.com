@@ -119,7 +119,7 @@ export default function LandingPage() {
 			<Section
 				id='reframe'
 				eyebrow='Why most people feel rushed'
-				title='Urgency isn’t a personality. It’s a structure problem.'
+				title='Feeling rushed is not a personality. It’s a structure problem.'
 			>
 				<div className='grid md:grid-cols-3 gap-6'>
 					<Card

@@ -85,7 +85,7 @@ function PhotoCard({ src, alt, caption }: { src?: string; alt?: string; caption?
 					<img
 						src={src}
 						alt={alt || 'Coach Larry'}
-						className='h-[340px] w-full object-cover md:h-[420px] opacity-90'
+						className='h-[340px] w-full object-cover scale-110  md:h-[420px] opacity-90'
 					/>
 				) : (
 					<div className='grid h-[340px] w-full place-items-center text-sm text-white/45 md:h-[420px]'></div>
@@ -173,12 +173,15 @@ export default function AboutPage() {
 						<p className='text-xs font-semibold tracking-[0.22em] text-white/60'>
 							COACHING PHILOSOPHY
 						</p>
-						<h2 className='mt-2 text-2xl font-semibold text-white md:text-3xl'>
-							Calm isn’t a personality. It’s a skill.
-						</h2>
+						<h2 className='mt-2 text-2xl font-semibold text-white md:text-3xl'></h2>
 						<p className='mt-3 max-w-3xl text-sm leading-relaxed text-white/70 md:text-base'>
-							Flow State is built on the belief that real competence shows up when the pace
-							increases. Not when everything is cooperative.
+							{/* When structure, position, and timing are trained correctly, calm becomes repeatable.{' '} */}
+							I don’t try to make people aggressive or fearless. I organize how their body moves,
+							reacts and responds when under pressure. When structure and position are reliable,
+							decisions slow down. <br />
+							<br />
+							Calm isn’t taught. It's the result.
+							<br />
 						</p>
 
 						<div className='mt-7 grid gap-4 md:grid-cols-3'>
@@ -221,16 +224,17 @@ export default function AboutPage() {
 						</Card>
 
 						<Card title='What I found'>
-							What I found wasn’t a new combo.
+							What I found wasn’t a new workout or technique.
 							<br />
 							<br />
-							It was the foundation underneath everything:
+							It was the foundation underneath of:
+							<br />
 							<span className='text-white/90'> Structure</span>,{' '}
 							<span className='text-white/90'>Position</span>, and{' '}
 							<span className='text-white/90'>Timing</span>.
 							<br />
 							<br />
-							When these pillars are intact, pressure doesn’t erase your skill.
+							When these pillars are intact, you stay poised and stay ready.
 						</Card>
 					</div>
 				</div>
