@@ -109,9 +109,9 @@ function FAQ({ q, a }: { q: string; a: string }) {
 }
 
 export default function PricingPage() {
-	// Swap these once you decide the exact destinations:
-	const START_HERE = '/assessment'
-	const BOOKING = '/book'
+	// Pay-first flow
+	const ASSESSMENT = '/assessment' // pay happens here (Stripe)
+	const SCHEDULE = '/schedule' // schedule happens here (Calendly embed)
 	const METHOD = '/method'
 
 	// Replace placeholder prices any time.
@@ -141,7 +141,8 @@ export default function PricingPage() {
 						</Link>
 						<div className='flex items-center gap-3'>
 							<SecondaryButton href={METHOD}>View the Method</SecondaryButton>
-							<PrimaryButton href={START_HERE}>Start with an Assessment</PrimaryButton>
+							<SecondaryButton href={SCHEDULE}>Already paid? Schedule</SecondaryButton>
+							<PrimaryButton href={ASSESSMENT}>Start with an Assessment</PrimaryButton>
 						</div>
 					</div>
 				</div>
@@ -162,11 +163,16 @@ export default function PricingPage() {
 						</p>
 
 						<div className='mt-7 flex flex-col gap-3 sm:flex-row'>
-							<PrimaryButton href={START_HERE}>Start with an Assessment</PrimaryButton>
+							<PrimaryButton href={ASSESSMENT}>Start with an Assessment</PrimaryButton>
+							<SecondaryButton href={SCHEDULE}>Already paid? Schedule</SecondaryButton>
 							<SecondaryButton href={METHOD}>View the Method</SecondaryButton>
 						</div>
 
-						<p className='mt-4 text-xs text-white/55'>Private • Focused • No experience required</p>
+						<p className='mt-4 text-xs text-white/55'>
+							Private • Focused • No experience required
+							<br />
+							Payment reserves your session. Scheduling happens immediately after checkout.
+						</p>
 					</div>
 				</div>
 			</section>
@@ -193,26 +199,24 @@ export default function PricingPage() {
 								'Timing & decision-making',
 								'Leave with 1–2 fixes + a plan'
 							]}
-							ctaLabel='Book an Assessment'
-							ctaHref={BOOKING}
+							ctaLabel='Pay to Reserve (Step 1)'
+							ctaHref={ASSESSMENT}
 							emphasized
 							badge='RECOMMENDED START'
 						/>
 
 						<div className='rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-8'>
-							<h3 className='text-lg font-semibold text-white/90'>What happens after</h3>
+							<h3 className='text-lg font-semibold text-white/90'>How it works</h3>
 							<p className='mt-2 text-sm leading-relaxed text-white/70'>
-								After the assessment, I’ll recommend the best next step based on your Structure,
-								Position, and Timing.
+								This is a pay-first booking model. Payment reserves your assessment session. After
+								payment, you’ll choose a time on the calendar.
 							</p>
 
 							<div className='mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-5'>
-								<div className='text-sm font-semibold text-white/90'>Typical next step</div>
-								<p className='mt-2 text-sm text-white/70'>
-									A short structured path to build competence fast — without chaos.
-								</p>
+								<div className='text-sm font-semibold text-white/90'>Step 2</div>
+								<p className='mt-2 text-sm text-white/70'>Already paid? Choose a time here.</p>
 								<div className='mt-5'>
-									<SecondaryButton href='#beginner-path'>See the Beginner Path</SecondaryButton>
+									<SecondaryButton href={SCHEDULE}>Schedule now</SecondaryButton>
 								</div>
 							</div>
 
@@ -250,7 +254,7 @@ export default function PricingPage() {
 								'Progress checks + next-step plan'
 							]}
 							ctaLabel='Start with an Assessment'
-							ctaHref={START_HERE}
+							ctaHref={ASSESSMENT}
 							emphasized
 							badge='MOST POPULAR NEXT STEP'
 						/>
@@ -276,7 +280,8 @@ export default function PricingPage() {
 							</div>
 
 							<div className='mt-7 flex flex-col gap-3 sm:flex-row'>
-								<PrimaryButton href={START_HERE}>Start with an Assessment</PrimaryButton>
+								<PrimaryButton href={ASSESSMENT}>Start with an Assessment</PrimaryButton>
+								<SecondaryButton href={SCHEDULE}>Already paid? Schedule</SecondaryButton>
 								<SecondaryButton href={METHOD}>View the Method</SecondaryButton>
 							</div>
 						</div>
@@ -307,7 +312,7 @@ export default function PricingPage() {
 								'Homework + progress tracking'
 							]}
 							ctaLabel='Start with an Assessment'
-							ctaHref={START_HERE}
+							ctaHref={ASSESSMENT}
 						/>
 
 						<PriceCard
@@ -321,7 +326,7 @@ export default function PricingPage() {
 								'Best value per session'
 							]}
 							ctaLabel='Start with an Assessment'
-							ctaHref={START_HERE}
+							ctaHref={ASSESSMENT}
 						/>
 
 						<div className='rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-8'>
@@ -337,8 +342,9 @@ export default function PricingPage() {
 									consistency: Private Packs.
 								</p>
 							</div>
-							<div className='mt-7'>
-								<PrimaryButton href={START_HERE}>Start with an Assessment</PrimaryButton>
+							<div className='mt-7 flex flex-col gap-3'>
+								<PrimaryButton href={ASSESSMENT}>Start with an Assessment</PrimaryButton>
+								<SecondaryButton href={SCHEDULE}>Already paid? Schedule</SecondaryButton>
 							</div>
 						</div>
 					</div>
@@ -369,14 +375,23 @@ export default function PricingPage() {
 							a='No. We build skill through structure, constraints, and progressive pressure. Safety and longevity matter.'
 						/>
 						<FAQ
-							q='What if I’m not sure what to buy?'
-							a='Start with an assessment. You’ll leave with clarity and a recommendation.'
+							q='How do I book?'
+							a='Start with the assessment. Payment reserves your session. After checkout, you’ll choose a time on the calendar.'
 						/>
-						<FAQ q='Cancellation / reschedule policy?' a='24 hours notice.' />
+						<FAQ
+							q='Cancellation / reschedule policy?'
+							a='24 hours notice required. Late cancellations and no-shows are non-refundable.'
+						/>
 						<FAQ
 							q='Do you train kids/teens?'
-							a='Yes. Kids/teens would benefit greatly from this type of training.'
+							a='Yes. Kids/teens benefit greatly from this type of structured training.'
 						/>
+					</div>
+
+					<div className='mt-8 flex flex-col gap-3 sm:flex-row'>
+						<PrimaryButton href={ASSESSMENT}>Start with an Assessment</PrimaryButton>
+						<SecondaryButton href={SCHEDULE}>Already paid? Schedule</SecondaryButton>
+						<SecondaryButton href={METHOD}>View the Method</SecondaryButton>
 					</div>
 				</div>
 			</section>
@@ -392,7 +407,8 @@ export default function PricingPage() {
 							Start with an assessment so your next step is the right step.
 						</p>
 						<div className='mt-6 flex flex-col gap-3 sm:flex-row'>
-							<PrimaryButton href={START_HERE}>Start with an Assessment</PrimaryButton>
+							<PrimaryButton href={ASSESSMENT}>Start with an Assessment</PrimaryButton>
+							<SecondaryButton href={SCHEDULE}>Already paid? Schedule</SecondaryButton>
 							<SecondaryButton href={METHOD}>View the Method</SecondaryButton>
 						</div>
 					</div>

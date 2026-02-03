@@ -100,6 +100,7 @@ export default function AboutPage() {
 	const ASSESSMENT = '/assessment'
 	const METHOD = '/method'
 	const PRICING = '/pricing'
+	const SCHEDULE = '/schedule'
 
 	// Optional: put a real photo in /public/images/coach-larry.jpg then set:
 	// const COACH_PHOTO = '/images/coach-larry.jpg'
@@ -180,7 +181,7 @@ export default function AboutPage() {
 							reacts and responds when under pressure. When structure and position are reliable,
 							decisions slow down. <br />
 							<br />
-							Calm isn’t taught. It's the result.
+							Calm isn&apos;t taught. I&apos;s the result.
 							<br />
 						</p>
 
@@ -378,7 +379,8 @@ export default function AboutPage() {
 						</p>
 						<div className='mt-6 flex flex-col gap-3 sm:flex-row'>
 							<PrimaryButton href={ASSESSMENT}>Start with an Assessment</PrimaryButton>
-							<SecondaryButton href={PRICING}>View Pricing</SecondaryButton>
+							<SecondaryButton href={METHOD}>View the Method</SecondaryButton>
+							<SecondaryButton href={SCHEDULE}>Already paid? Schedule</SecondaryButton>
 						</div>
 					</div>
 				</div>

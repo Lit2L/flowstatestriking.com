@@ -36,12 +36,20 @@ export default function SmoothScroller() {
 		rafId = requestAnimationFrame(raf)
 
 		// Keep anchor jumps smooth (e.g., /#method)
+		// Keep anchor jumps smooth (ONLY on home page + only for real scroll sections)
 		const onHashChange = () => {
+			// Only run on the landing page
+			if (window.location.pathname !== '/') return
+
 			const id = window.location.hash.replace('#', '')
 			if (!id) return
+
 			const el = document.getElementById(id)
 			if (!el) return
-			// Use scroll-margin-top on your sections (already set via [data-scroll-section="true"])
+
+			// Only scroll to elements that are part of your intended scroll system
+			if (el.getAttribute('data-scroll-section') !== 'true') return
+
 			lenis.scrollTo(el, { offset: 0, immediate: false })
 		}
 

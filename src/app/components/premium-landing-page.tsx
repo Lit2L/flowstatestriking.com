@@ -1,98 +1,22 @@
 // app/page.tsx
-// Premium landing page (Next.js App Router + Tailwind)
-// - Calm, dark, “quiet authority” design
-// - Section IDs + scroll margin for fixed navbar scrollspy
-// - Mobile-first, crisp spacing, restrained accents
-//
-// Assumes Tailwind is set up. Works great with the PremiumNavbarAll component you already have.
-
 import Link from 'next/link'
-
-function Section({
-	id,
-	eyebrow,
-	title,
-	children
-}: {
-	id: string
-	eyebrow?: string
-	title: string
-	children: React.ReactNode
-}) {
-	return (
-		<section id={id} data-scroll-section='true' className='py-24 md:py-32 border-t border-white/5'>
-			<div className='mx-auto max-w-6xl px-5 sm:px-8'>
-				<div className='max-w-3xl'>
-					{eyebrow ? (
-						<p className='text-xs tracking-[0.22em] text-neutral-500 mb-4'>
-							{eyebrow.toUpperCase()}
-						</p>
-					) : null}
-					<h2 className='text-2xl md:text-3xl font-medium tracking-wide text-neutral-100'>
-						{title}
-					</h2>
-				</div>
-				<div className='mt-10'>{children}</div>
-			</div>
-		</section>
-	)
-}
-
-function Card({ title, desc, meta }: { title: string; desc: string; meta?: string }) {
-	return (
-		<div className='rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-7 shadow-[0_20px_70px_rgba(0,0,0,0.35)]'>
-			<div className='flex items-start justify-between gap-4'>
-				<h3 className='text-lg font-medium tracking-wide text-neutral-100'>{title}</h3>
-				{meta ? <span className='text-xs tracking-[0.18em] text-neutral-500'>{meta}</span> : null}
-			</div>
-			<p className='mt-3 text-neutral-400 leading-relaxed'>{desc}</p>
-		</div>
-	)
-}
-
-function Pillar({ name, meaning, detail }: { name: string; meaning: string; detail: string }) {
-	return (
-		<div className='rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-7'>
-			<p className='text-xs tracking-[0.22em] text-neutral-500'>{meaning}</p>
-			<h3 className='mt-2 text-xl font-medium tracking-wide text-neutral-100'>{name}</h3>
-			<p className='mt-3 text-neutral-400 leading-relaxed'>{detail}</p>
-		</div>
-	)
-}
-
-function CTAButton({
-	href,
-	children,
-	variant = 'primary'
-}: {
-	href: string
-	children: React.ReactNode
-	variant?: 'primary' | 'ghost'
-}) {
-	const base =
-		'inline-flex items-center justify-center rounded-full px-5 py-3 text-sm tracking-wide transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60'
-	const primary =
-		'border border-emerald-400/20 bg-emerald-400/10 text-emerald-200 hover:bg-emerald-400/15 hover:border-emerald-400/30'
-	const ghost = 'border border-white/10 bg-white/[0.03] text-neutral-200 hover:bg-white/[0.06]'
-	return (
-		<Link href={href} className={`${base} ${variant === 'primary' ? primary : ghost}`}>
-			{children}
-		</Link>
-	)
-}
+import CTAButton from './cta-button'
+import MicroProof from './micro-pills'
+import Section from './section'
+import Pillar from './pillars'
+import Card from './card'
 
 export default function PremiumLandingPage() {
 	return (
-		<div className='min-h-screen'>
+		<div className='min-h-screen bg-[#0A0A0A] text-neutral-100'>
 			{/* HERO */}
 			<section
 				id='hero'
 				data-scroll-section='true'
 				className='relative min-h-[92vh] flex items-center'
 			>
-				{/* Background */}
 				<div className='absolute inset-0 -z-10'>
-					<div className='absolute inset-0 bg-[radial-gradient(900px_500px_at_15%_20%,rgba(52,211,153,0.10),transparent_55%),radial-gradient(700px_450px_at_80%_25%,rgba(255,255,255,0.05),transparent_60%),linear-gradient(to_bottom,rgba(10,10,10,0.0),rgba(10,10,10,0.85))]' />
+					<div className='absolute inset-0 bg-[radial-gradient(900px_500px_at_15%_20%,rgba(52,211,153,0.10),transparent_55%),radial-gradient(700px_450px_at_80%_25%,rgba(255,255,255,0.05),transparent_60%),linear-gradient(to_bottom,rgba(10,10,10,0.0),rgba(10,10,10,0.88))]' />
 					<div className="absolute inset-0 opacity-[0.06] bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22%3E%3Cfilter id=%22n%22 x=%220%22 y=%220%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22120%22 height=%22120%22 filter=%22url(%23n)%22 opacity=%220.5%22/%3E%3C/svg%3E')]" />
 				</div>
 
@@ -104,23 +28,33 @@ export default function PremiumLandingPage() {
 
 							<h1 className='mt-5 text-4xl md:text-5xl font-medium tracking-wide text-neutral-100'>
 								Train to stay calm under pressure.
-								{/* Train calm. Strike with control. */}
 							</h1>
 
 							<p className='mt-6 text-neutral-400 leading-relaxed max-w-xl'>
 								A private training system built on{' '}
 								<span className='text-neutral-200'>Structure</span>,{' '}
 								<span className='text-neutral-200'>Position</span>, and{' '}
-								<span className='text-neutral-200'>Timing</span>—so your skill holds up when things
-								speed up.
+								<span className='text-neutral-200'>Timing</span> — so you stay organized when
+								pressure comes forward.
 							</p>
-
+							<p className=''></p>
 							<div className='mt-10 flex flex-col sm:flex-row gap-3'>
 								<CTAButton href='/assessment'>Start with an Assessment</CTAButton>
 								<CTAButton href='/method' variant='ghost'>
 									View the Method
 								</CTAButton>
 							</div>
+
+							{/* <MicroProof
+								items={[
+									'22+ YEARS EXPERIENCE',
+									'Refined through 22+ years of boxing, Muay Thai, and kickboxing coaching',
+
+									'FOUNTAIN VALLEY, CA',
+									'PRIVATE + SMALL GROUP',
+									'BUILT FOR LONGEVITY'
+								]}
+							/> */}
 
 							<div className='mt-10 flex flex-wrap gap-6 text-xs tracking-[0.18em] text-neutral-500'>
 								<span className='inline-flex items-center gap-2'>
@@ -138,7 +72,7 @@ export default function PremiumLandingPage() {
 							</div>
 						</div>
 
-						{/* Right: Premium hero video card */}
+						{/* Right: video card */}
 						<div className='md:col-span-5'>
 							<div className='rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-[0_30px_90px_rgba(0,0,0,0.55)]'>
 								<div className='p-4 border-b border-white/10 flex items-center justify-between'>
@@ -146,7 +80,6 @@ export default function PremiumLandingPage() {
 									<div className='text-xs text-neutral-500'>LIMITED AVAILABILITY</div>
 								</div>
 
-								{/* VIDEO */}
 								<div className='relative aspect-[4/5] bg-neutral-950'>
 									<video
 										className='absolute inset-0 h-full w-full object-cover'
@@ -155,18 +88,14 @@ export default function PremiumLandingPage() {
 										loop
 										playsInline
 										preload='metadata'
-										src='/videos/desktop.mp4'
-										// controls={false} // optional, default is no controls
+										poster='/images/hero-poster.jpg'
+										src='/videos/hero.mp4'
 									>
-										<source src='/videos/hero.mp4' type='video/mp4' />
-										{/* Fallback text */}
 										Your browser does not support the video tag.
 									</video>
 
-									{/* Soft overlay for premium readability */}
 									<div className='absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.10),rgba(0,0,0,0.55))]' />
 
-									{/* Optional corner label */}
 									<div className='absolute bottom-4 left-4 right-4'>
 										<div className='rounded-2xl border border-white/10 bg-neutral-950/60 backdrop-blur-xl px-4 py-3'>
 											<p className='text-sm text-neutral-200'>Quiet skill. Clean decisions.</p>
@@ -178,7 +107,7 @@ export default function PremiumLandingPage() {
 								</div>
 
 								<div className='p-5'>
-									<p className='text-sm text-neutral-300'>“Fighting is a dance.”</p>
+									<p className='text-sm text-neutral-300'>Pressure doesn’t break structure.</p>
 									<p className='mt-2 text-xs text-neutral-500 tracking-[0.16em]'>
 										FLOW STATE PRINCIPLE
 									</p>
@@ -187,97 +116,143 @@ export default function PremiumLandingPage() {
 						</div>
 					</div>
 
-					<div className='mt-14 text-center text-xs tracking-[0.22em] text-neutral-600'>SCROLL</div>
+					<div className='mt-24 mb-3 text-center text-xs tracking-[0.22em] text-neutral-700'>
+						SCROLL ↓
+					</div>
 				</div>
 			</section>
 
-			{/* REFRAME */}
-			<Section
-				id='reframe'
-				eyebrow='Why most people feel rushed'
-				title='Calm comes from structure and position.'
-			>
+			{/* REFRAME (tighter) */}
+			<Section id='reframe' eyebrow='Why most people feel rushed' title='Fast isn’t the fix.'>
 				<div className='grid md:grid-cols-3 gap-6'>
 					<Card
-						title='Fast feels busy'
+						title='Speed creates debt'
 						meta='OBSERVATION'
-						desc='When structure and distance are inconsistent, you spend speed and energy to compensate for mistakes. You feel rushed even when you’re athletic.'
+						desc='When structure and distance are inconsistent, you spend speed to compensate — and panic shows up as “effort.”'
 					/>
 					<Card
 						title='Position reduces motion'
 						meta='PRINCIPLE'
-						desc='Shorter distance creates cleaner entries and more precise strikes — without forcing speed.'
+						desc='Shorter distance creates cleaner entries and cleaner exits — without forcing pace.'
 					/>
 					<Card
-						title='Calm is trained'
-						meta='OUTCOME'
-						desc='Composure comes from reliable alignment and repeatable decisions. Not hype. Not adrenaline.'
+						title='Calm is the outcome'
+						meta='RESULT'
+						desc='Composure comes from repeatable alignment and repeatable decisions — not adrenaline.'
 					/>
+				</div>
+
+				<div className='mt-10'>
+					<CTAButton href='/assessment'>Start with an Assessment</CTAButton>
 				</div>
 			</Section>
 
-			{/* METHOD */}
+			{/* METHOD (compressed) */}
 			<Section id='method' eyebrow='The Method' title='Pillars govern technique.'>
 				<div className='grid md:grid-cols-3 gap-6'>
 					<Pillar
 						meaning='ALIGNMENT'
 						name='Structure'
-						detail='A stable frame that keeps you balanced, protected, and efficient under pressure.'
+						detail='A stable frame that keeps you balanced, protected, and efficient when pressure comes forward.'
 					/>
 					<Pillar
 						meaning='SPACE'
 						name='Position'
-						detail='Distance and angles that reduce effort and remove urgency from exchanges.'
+						detail='Distance and angles that remove urgency — so you stop chasing exchanges.'
 					/>
 					<Pillar
 						meaning='DECISION'
 						name='Timing'
-						detail='Acting early instead of rushing late—because your body is already organized.'
+						detail='Acting early instead of rushing late — because your body is already organized.'
 					/>
 				</div>
-				<div className='mt-10'>
-					<CTAButton href='/method'>Go deeper on the Method</CTAButton>
+
+				<div className='mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-6'>
+					<p className='text-neutral-400 leading-relaxed'>
+						Technique sits on the pillars. The pillars don’t change when the technique changes.
+					</p>
+				</div>
+
+				<div className='mt-10 flex flex-col sm:flex-row gap-3'>
+					<CTAButton href='/method' variant='ghost'>
+						View the Method
+					</CTAButton>
+					<CTAButton href='/assessment'>Start with an Assessment</CTAButton>
 				</div>
 			</Section>
 
-			{/* TRAINING */}
+			{/* WHO IT’S FOR (conversion section) */}
+			<Section id='who' eyebrow='Who this is for' title='Competence, not chaos.'>
+				<div className='grid md:grid-cols-2 gap-6'>
+					<div className='rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:p-8'>
+						<div className='text-xs tracking-[0.22em] text-neutral-500'>BEST FOR</div>
+						<ul className='mt-4 space-y-2 text-neutral-400 leading-relaxed'>
+							<li>• Beginners who want a clean foundation</li>
+							<li>• People who feel stiff, rushed, or inconsistent</li>
+							<li>• Anyone who gets countered and can’t explain why</li>
+							<li>• Adults who care about longevity and safety</li>
+							<li>• Students who want calm decision-making under pressure</li>
+						</ul>
+					</div>
+
+					<div className='rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8'>
+						<div className='text-xs tracking-[0.22em] text-neutral-500'>NOT ABOUT</div>
+						<ul className='mt-4 space-y-2 text-neutral-400 leading-relaxed'>
+							<li>• “Go harder” training</li>
+							<li>• Ego sparring</li>
+							<li>• Random combos without a system</li>
+							<li>• Athleticism replacing structure</li>
+						</ul>
+
+						<div className='mt-8'>
+							<CTAButton href='/assessment'>Start with an Assessment</CTAButton>
+						</div>
+					</div>
+				</div>
+			</Section>
+
+			{/* TRAINING (simplified) */}
 			<Section id='training' eyebrow='Training' title='Paths, not random sessions.'>
 				<div className='grid lg:grid-cols-3 gap-6'>
 					<Card
-						title='Assessment Session'
+						title='Assessment'
 						meta='75 MIN'
-						desc='We evaluate structure, distance, and decision-making. You leave with clarity and a recommended path.'
+						desc='Identify what breaks under pressure. Leave with 1–2 fixes + a recommended path.'
 					/>
 					<Card
-						title='Beginners Path'
-						meta='8–12 SESSIONS'
-						// desc='Designed to make you calm and capable anywhere—without relying on speed or toughness.'
-						desc='Build structure, balance, and control so you can walk into any boxing or kickboxing gym and train confidently.'
+						title='Beginner Path'
+						meta='8 SESSIONS'
+						desc='Build structure, balance, and control so you can train confidently in any boxing or kickboxing gym.'
 					/>
 					<Card
-						title='Small Group Training'
-						meta='3–5 PEOPLE'
-						desc='Shared learning with individual correction. High signal, lower fatigue, strong retention.'
+						title='Private Packs'
+						meta='5 / 10'
+						desc='Focused refinement with continuity: one priority at a time, with pressure added progressively.'
 					/>
 				</div>
-				<div className='mt-8'>
-					<CTAButton href='/training'>Go Deeper on the Training</CTAButton>
+
+				<div className='mt-10 flex flex-col sm:flex-row gap-3'>
+					<CTAButton href='/training' variant='ghost'>
+						View Training
+					</CTAButton>
+					<CTAButton href='/assessment'>Start with an Assessment</CTAButton>
 				</div>
 			</Section>
 
-			{/* PRICING */}
-			<Section id='pricing' eyebrow='Pricing' title='Premium pricing should feel appropriate.'>
+			{/* PRICING PREVIEW (no menu, clear next step) */}
+			<Section id='pricing' eyebrow='Pricing' title='Simple pricing. Limited availability.'>
 				<div className='rounded-3xl border border-white/10 bg-white/[0.02] p-6 md:p-8'>
-					<p className='text-neutral-300 leading-relaxed'>
-						Training is done in short, focused paths. Availability is intentionally limited to
-						preserve quality.
+					<p className='text-neutral-300 leading-relaxed max-w-3xl'>
+						Training is delivered in short, focused paths. Availability is intentionally limited to
+						preserve quality. Start with an assessment to remove guessing and choose the right next
+						step.
 					</p>
-					<div className='mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4'>
+
+					<div className='mt-8 grid sm:grid-cols-3 gap-4'>
 						{[
-							{ k: 'ASSESSMENT', v: '$95', d: 'Direction first. No guessing.' },
-							{ k: 'BEGINNER PATH', v: '$800', d: '8 sessions, foundations.' },
-							{ k: 'SMALL GROUP', v: '$60 / session', d: '3–6 people, high attention.' }
-							// { k: 'INTENSIVE', v: '$275', d: '90 minutes, one problem solved.' }
+							{ k: 'ASSESSMENT', v: '$95', d: 'Direction first. One session, clear plan.' },
+							{ k: 'BEGINNER PATH', v: '$800', d: '8 sessions. Foundations that hold up.' },
+							{ k: 'PRIVATE PACKS', v: '$500 / $1000', d: '5 or 10 sessions for continuity.' }
 						].map((x) => (
 							<div key={x.k} className='rounded-2xl border border-white/10 bg-white/[0.03] p-5'>
 								<div className='text-xs tracking-[0.22em] text-neutral-500'>{x.k}</div>
@@ -286,42 +261,97 @@ export default function PremiumLandingPage() {
 							</div>
 						))}
 					</div>
-					<div className='mt-8'>
-						<CTAButton href='/assessment'>Request an Assessment</CTAButton>
+
+					<p className='mt-6 text-xs text-neutral-500 tracking-[0.16em]'>
+						PAYMENT RESERVES YOUR SESSION • 24-HOUR RESCHEDULE POLICY
+					</p>
+
+					<div className='mt-8 flex flex-col sm:flex-row gap-3'>
+						<CTAButton href='/assessment'>Start with an Assessment</CTAButton>
+						<CTAButton href='/pricing' variant='ghost'>
+							View Full Pricing
+						</CTAButton>
 					</div>
 				</div>
 			</Section>
 
-			{/* ABOUT */}
+			{/* ABOUT PREVIEW (shorter, more grounded) */}
 			<Section id='about' eyebrow='About' title='Longevity is a skill.'>
 				<div className='grid md:grid-cols-12 gap-6 items-start'>
 					<div className='md:col-span-7 rounded-2xl border border-white/10 bg-white/[0.02] p-6 md:p-8'>
 						<p className='text-neutral-300 leading-relaxed'>
-							Flow State Striking is built for people who want skill that lasts—not habits that
-							break when pressure comes forward.
+							Coach Larry • 22+ years in boxing, Muay Thai, and kickboxing.
 						</p>
 						<p className='mt-4 text-neutral-400 leading-relaxed'>
-							The goal isn’t to make you tired. It’s to make you organized—so your timing appears
-							naturally and your decisions stay clear.
+							I don’t teach people to fight harder. I organize how they move and decide under
+							pressure — so calm becomes repeatable.
 						</p>
+
 						<div className='mt-8 flex gap-3 flex-wrap'>
-							<CTAButton href='/about'>Read the full story</CTAButton>
-							<CTAButton href='/assessment' variant='ghost'>
-								Start with an Assessment
+							<CTAButton href='/about' variant='ghost'>
+								Read the full story
 							</CTAButton>
+							<CTAButton href='/assessment'>Start with an Assessment</CTAButton>
 						</div>
 					</div>
+
 					<div className='md:col-span-5 rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8'>
-						<div className='text-xs tracking-[0.22em] text-neutral-500'>THE STANDARD</div>
-						<p className='mt-4 text-neutral-400 leading-relaxed'>
-							If a movement increases urgency, reduces awareness, or depends on athleticism
-							alone—it’s incomplete.
+						<div className='text-xs tracking-[0.22em] text-neutral-500'>END STATE</div>
+						<p className='mt-4 text-neutral-300 leading-relaxed'>Calm. Early. Efficient.</p>
+						<div className='mt-6 text-xs tracking-[0.22em] text-neutral-500'>STANDARD</div>
+						<p className='mt-3 text-neutral-400 leading-relaxed'>
+							If a movement increases urgency, reduces awareness, or depends on athleticism alone,
+							it’s incomplete.
 						</p>
-						<div className='mt-6 text-xs tracking-[0.22em] text-neutral-500'>END STATE</div>
-						<p className='mt-3 text-neutral-300 leading-relaxed'>Calm. Early. Efficient.</p>
 					</div>
 				</div>
 			</Section>
+
+			{/* FINAL CTA */}
+			<section className='border-t border-white/5 py-20 md:py-24'>
+				<div className='mx-auto max-w-6xl px-5 sm:px-8'>
+					<div className='rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-12'>
+						<h2 className='text-2xl md:text-3xl font-medium tracking-wide text-neutral-100'>
+							Start with an Assessment.
+						</h2>
+						<p className='mt-4 text-neutral-400 leading-relaxed max-w-2xl'>
+							If you’re unsure where to begin, I’ll identify what’s breaking down — and what to fix
+							first.
+						</p>
+						<div className='mt-8 flex flex-col sm:flex-row gap-3'>
+							<CTAButton href='/assessment'>Start with an Assessment</CTAButton>
+							<CTAButton href='/schedule' variant='ghost'>
+								Already paid? Schedule
+							</CTAButton>
+						</div>
+
+						<p className='mt-6 text-xs text-neutral-500 tracking-[0.16em]'>
+							PAY FIRST • SCHEDULE AFTER CHECKOUT • BUILT FOR LONGEVITY
+						</p>
+					</div>
+
+					{/* HOW IT WORKS (conversion lever) */}
+					<div className='mt-12 rounded-3xl border border-white/10 bg-white/[0.03] p-3 md:p-6'>
+						<div className='text-xs tracking-[0.22em] text-neutral-300'>HOW IT WORKS</div>
+						<div className='mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3'>
+							{[
+								{ k: 'STEP 1', t: 'Reserve', d: 'Pay to reserve your assessment session.' },
+								{ k: 'STEP 2', t: 'Schedule', d: 'Pick a time immediately after checkout.' },
+								{ k: 'STEP 3', t: 'Train', d: 'Leave with 1–2 fixes and a clear next step.' }
+							].map((x) => (
+								<div key={x.k} className='rounded-2xl border border-white/10 bg-white/[0.02] p-3'>
+									<div className='text-[10px] text-emerald-500 tracking-[0.22em] '>{x.k}</div>
+									<div className='my-1 text-sm text-neutral-200'>{x.t}</div>
+									<div className='mt-1 text-sm text-neutral-400'>{x.d}</div>
+								</div>
+							))}
+						</div>
+						<p className='mt-6 text-xs text-neutral-300 tracking-[0.12em]'>
+							24-HOUR RESCHEDULE POLICY • PAYMENT RESERVES YOUR SESSION
+						</p>
+					</div>
+				</div>
+			</section>
 
 			{/* FOOTER */}
 			<footer className='border-t border-white/5 py-14'>
@@ -331,6 +361,7 @@ export default function PremiumLandingPage() {
 							<div className='text-sm tracking-wide text-neutral-200'>Flow State Striking</div>
 							<div className='mt-2 text-xs tracking-[0.18em] text-neutral-500'>
 								STRUCTURE • POSITION • TIMING
+								<p className='mt-1 text-[9px]'>FLOW WITH CLARITY & CONTROL</p>
 							</div>
 						</div>
 						<div className='flex flex-wrap gap-4 text-sm'>
