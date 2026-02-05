@@ -186,10 +186,10 @@ export default function TrainingPage() {
 	// If you have actual files, set these to your mp4 paths:
 	const videos = useMemo(
 		() => ({
-			structure: '', // '/videos/structure.mp4'
-			position: '', // '/videos/position.mp4'
-			timing: '', // '/videos/timing.mp4'
-			session: '' // '/videos/session-example.mp4'
+			structure: '/videos/training-1.mp4', // '/videos/structure.mp4'
+			position: '/videos/position-1.mp4', // '/videos/position.mp4'
+			timing: '/videos/timing-1.mp4', // '/videos/timing.mp4'
+			session: '/videos/training.mp4' // '/videos/session-example.mp4'
 		}),
 		[]
 	)
@@ -289,10 +289,10 @@ export default function TrainingPage() {
 				</div>
 
 				<div className='mt-6 grid gap-4 md:grid-cols-2'>
-					<VideoFrame
+					{/* <VideoFrame
 						label='Training clip: constraints in action'
 						src={videos.session || undefined}
-					/>
+					/> */}
 					<div className='rounded-3xl border border-white/10 bg-white/[0.03] p-7'>
 						<h3 className='text-base font-semibold text-white/90'>The vibe</h3>
 						<p className='mt-2 text-sm leading-relaxed text-white/70'>
