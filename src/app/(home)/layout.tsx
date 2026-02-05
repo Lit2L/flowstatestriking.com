@@ -17,7 +17,6 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='en'>
-			<Analytics />
 			<body className='bg-neutral-950 text-neutral-200 antialiased inter.className'>
 				<SmoothScroller />
 				<PremiumNavbar />
@@ -25,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 				<Provider>
 					<main className='pt-16'>{children}</main>
 				</Provider>
+				<Analytics />
 			</body>
 		</html>
 	)
