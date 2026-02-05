@@ -16,11 +16,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang='en'>
 			<body className='bg-neutral-950 text-neutral-200 antialiased inter.className'>
-				<Analytics />
 				<SmoothScroller />
 				<PremiumNavbar />
 				<Provider>
 					<main className='pt-16'>{children}</main>
+					<Analytics />
 				</Provider>
 			</body>
 		</html>
