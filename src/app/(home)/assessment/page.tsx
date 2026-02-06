@@ -35,16 +35,31 @@ function PrimaryButton({
 	)
 }
 
-function SecondaryButton({ href, children }: { href: string; children: React.ReactNode }) {
+function SecondaryButton({
+	href,
+	children,
+	external
+}: {
+	href: string
+	children: React.ReactNode
+	external?: boolean
+}) {
+	const className = cx(
+		'inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold',
+		'border border-white/15 bg-white/[0.02] text-white/90 hover:bg-white/[0.05]',
+		'transition'
+	)
+
+	if (external) {
+		return (
+			<a href={href} target='_blank' rel='noreferrer' className={className}>
+				{children}
+			</a>
+		)
+	}
+
 	return (
-		<Link
-			href={href}
-			className={cx(
-				'inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold',
-				'border border-white/15 bg-white/[0.02] text-white/90 hover:bg-white/[0.05]',
-				'transition'
-			)}
-		>
+		<Link href={href} className={className}>
 			{children}
 		</Link>
 	)
@@ -71,11 +86,15 @@ function Card({
 }
 
 export default function AssessmentPage() {
-	// Stripe Checkout link
-	const STRIPE_URL = 'https://buy.stripe.com/28EfZg0yW85DgBJ8RU1VK08'
+	/**
+	 * Calendly + Stripe combo (Paid Event)
+	 * Replace with your Calendly event link that has Stripe payments enabled.
+	 * Example: https://calendly.com/flowstate_striking/assessment
+	 */
+	const CALENDLY_URL = 'https://calendly.com/flowstatestriking/flow-state-assessment'
 
-	// Test STripe URL
-	// const STRIPE_URL = 'https://buy.stripe.com/test_14A28qchEgC91GP7NQ1VK02'
+	// Optional: support / contact route (adjust to your site)
+	const CONTACT_URL = '/contact'
 
 	return (
 		<main className='relative min-h-screen bg-[#070A0F] text-white'>
@@ -98,36 +117,37 @@ export default function AssessmentPage() {
 					</h1>
 
 					<p className='mt-6 text-base leading-relaxed text-white/70 md:text-md'>
-						This is a paid, one-on-one assessment designed to understand how you move, how you
-						handle pressure, and what’s currently limiting your progress.
+						A paid, one-on-one session designed to evaluate posture, stance, balance, and striking
+						mechanics under light pressure.
 					</p>
 
 					<p className='mt-6 text-base leading-relaxed text-white/70 md:text-md'>
-						It is <span className='text-white/85'>not a workout</span> and not a sales session. It’s
-						a focused evaluation that gives you a clear next step — whether you continue training or
-						not.
+						This is <span className='text-white/85'>not a workout</span> and not a sales session.
+						It’s a focused evaluation that gives you a clear next step—whether you continue training
+						with me or not.
 					</p>
 
 					<div className='mt-12 flex flex-col gap-3 sm:flex-row'>
-						<PrimaryButton href={STRIPE_URL} external>
-							Pay & Reserve Assessment
+						<PrimaryButton href={CALENDLY_URL} external>
+							Book Assessment (Pay to Confirm)
 						</PrimaryButton>
-						<SecondaryButton href='/schedule'>Already paid? Choose a time</SecondaryButton>
+
+						<SecondaryButton href={CONTACT_URL}>Questions? Contact me</SecondaryButton>
 					</div>
 
 					<p className='mt-4 text-xs text-white/55'>
-						Payment reserves your session. You’ll schedule your time immediately after checkout.
+						You’ll choose a time first. Payment happens during booking to confirm the session.
 					</p>
 				</div>
 
 				{/* GRID */}
 				<div className='mt-24 grid gap-4 md:grid-cols-3'>
-					<Card kicker='WHAT WE LOOK AT' title='Movement & structure'>
+					<Card kicker='WHAT WE LOOK AT' title='Structure & mechanics'>
 						<p>Posture, balance, alignment, and how efficiently force moves through your body.</p>
 					</Card>
 
-					<Card kicker='UNDER PRESSURE' title='Distance & readiness'>
-						<p>How you manage space, timing, and reactions when things start moving faster.</p>
+					<Card kicker='UNDER LIGHT PRESSURE' title='Distance & readiness'>
+						<p>How you manage space and stay defensively responsible as pace increases.</p>
 					</Card>
 
 					<Card kicker='OUTCOME' title='A clear direction'>
@@ -141,38 +161,50 @@ export default function AssessmentPage() {
 				{/* PROCESS */}
 				<div className='mt-24 rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-10'>
 					<h2 className='text-xl font-semibold md:text-2xl'>How it works</h2>
+
 					<ol className='mt-6 space-y-3 text-sm text-white/70 md:text-base'>
-						<li>1. Pay to reserve your assessment</li>
-						<li>2. Choose a time that works for you</li>
+						<li>1. Choose an available time</li>
+						<li>2. Pay during booking to confirm</li>
 						<li>3. Attend the session and get clear direction</li>
 					</ol>
 
-					<div className='mt-6 grid gap-4 md:grid-cols-2'>
+					<div className='mt-8 grid gap-4 md:grid-cols-2'>
+						<div className='rounded-2xl border border-white/10 bg-white/[0.02] p-5'>
+							<div className='text-sm font-semibold text-white/85'>What’s included</div>
+							<ul className='mt-3 space-y-1 text-sm text-white/65'>
+								<li>• 1 private assessment session</li>
+								<li>• Movement + stance evaluation</li>
+								<li>• Light technical exchange (no hard sparring)</li>
+								<li>• Clear recommendation for next steps</li>
+							</ul>
+						</div>
+
 						<div className='rounded-2xl border border-white/10 bg-white/[0.02] p-5'>
 							<div className='text-sm font-semibold text-white/85'>What to bring</div>
 							<ul className='mt-3 space-y-1 text-sm text-white/65'>
 								<li>• Comfortable training clothes</li>
 								<li>• Water</li>
 								<li>• Hand wraps (optional)</li>
+								<li>• Gloves (optional)</li>
 							</ul>
 						</div>
+					</div>
 
-						<div className='rounded-2xl border border-white/10 bg-white/[0.02] p-5'>
-							<div className='text-sm font-semibold text-white/85'>Cancellation & rescheduling</div>
-							<p className='mt-3 text-sm text-white/65'>
-								You may reschedule or cancel up to 24 hours in advance using the link in your
-								confirmation email. Late cancellations are non-refundable.
-							</p>
-						</div>
+					<div className='mt-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5'>
+						<div className='text-sm font-semibold text-white/85'>Cancellation & rescheduling</div>
+						<p className='mt-3 text-sm text-white/65'>
+							You can reschedule or cancel up to 24 hours in advance using the link in your
+							confirmation email. Late cancellations are non-refundable.
+						</p>
 					</div>
 				</div>
 
 				{/* FINAL CTA */}
 				<div className='mt-20 flex flex-col gap-3 sm:flex-row'>
-					<PrimaryButton href={STRIPE_URL} external>
-						Reserve Your Assessment
+					<PrimaryButton href={CALENDLY_URL} external>
+						Book Your Assessment
 					</PrimaryButton>
-					<SecondaryButton href='/schedule'>Already paid? Schedule now</SecondaryButton>
+					<SecondaryButton href='/pricing'>View pricing</SecondaryButton>
 				</div>
 			</div>
 		</main>
