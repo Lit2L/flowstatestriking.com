@@ -155,7 +155,7 @@ function VideoFrame({ src, poster, label }: { src?: string; poster?: string; lab
 		<div className='rounded-3xl border border-white/10 bg-white/[0.03] p-4'>
 			<div className='flex items-center justify-between'>
 				<p className='text-xs font-semibold tracking-[0.22em] text-white/60'>{label}</p>
-				<p className='text-[11px] text-white/45'>Optional clip</p>
+				{/* <p className='text-[11px] text-white/45'>Optional clip</p> */}
 			</div>
 			<div className='mt-3 overflow-hidden rounded-2xl border border-white/10 bg-black/40'>
 				{src ? (
@@ -188,7 +188,7 @@ export default function TrainingPage() {
 		() => ({
 			structure: '/videos/training-1.mp4', // '/videos/structure.mp4'
 			position: '/videos/position-1.mp4', // '/videos/position.mp4'
-			timing: '/videos/timing-1.mp4', // '/videos/timing.mp4'
+			timing: '/videos/kick-1.mp4', // '/videos/timing.mp4'
 			session: '/videos/training.mp4' // '/videos/session-example.mp4'
 		}),
 		[]
@@ -327,8 +327,9 @@ export default function TrainingPage() {
 
 				<div className='mt-6 grid gap-4 md:grid-cols-3'>
 					<VideoFrame label='Clip: structure' src={videos.structure || undefined} />
-					<VideoFrame label='Clip: position' src={videos.position || undefined} />
-					<VideoFrame label='Clip: timing' src={videos.timing || undefined} />
+					<VideoFrame label='Clip: movement' src={videos.position || undefined} />
+					<VideoFrame label='Clip: technique' src={videos.timing || undefined} />
+					{/* <VideoFrame label='Clip: timing' src={videos.timing || undefined} /> */}
 				</div>
 			</Section>
 

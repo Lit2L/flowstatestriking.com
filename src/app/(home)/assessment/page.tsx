@@ -72,10 +72,10 @@ function Card({
 
 export default function AssessmentPage() {
 	// Stripe Checkout link
-	// const STRIPE_URL = 'https://buy.stripe.com/28EfZg0yW85DgBJ8RU1VK08'
+	const STRIPE_URL = 'https://buy.stripe.com/28EfZg0yW85DgBJ8RU1VK08'
 
 	// Test STripe URL
-	const STRIPE_URL = 'https://buy.stripe.com/test_14A28qchEgC91GP7NQ1VK02'
+	// const STRIPE_URL = 'https://buy.stripe.com/test_14A28qchEgC91GP7NQ1VK02'
 
 	return (
 		<main className='relative min-h-screen bg-[#070A0F] text-white'>
