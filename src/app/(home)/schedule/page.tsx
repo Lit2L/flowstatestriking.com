@@ -94,8 +94,8 @@ function InfoCard({ title, children }: { title: string; children: React.ReactNod
 }
 
 export default function SchedulePage() {
-	const PHONE_HREF = 'tel:+17145551234'
-	const SMS_HREF = 'sms:+17145551234'
+	const PHONE_HREF = 'tel:+19497852991'
+	const SMS_HREF = 'sms:+19497852991'
 
 	return (
 		<main className='relative min-h-screen bg-[#070A0F] text-white'>

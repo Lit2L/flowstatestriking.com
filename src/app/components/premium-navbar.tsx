@@ -1,4 +1,3 @@
-// components/PremiumNavbar.tsx
 'use client'
 
 import React, { useEffect, useMemo, useState } from 'react'
@@ -20,6 +19,7 @@ function cx(...classes: Array<string | false | undefined | null>) {
 
 function usePrefersReducedMotion() {
 	const [reduced, setReduced] = useState(false)
+
 	useEffect(() => {
 		const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
 		const onChange = () => setReduced(mq.matches)
@@ -27,21 +27,22 @@ function usePrefersReducedMotion() {
 		mq.addEventListener?.('change', onChange)
 		return () => mq.removeEventListener?.('change', onChange)
 	}, [])
+
 	return reduced
 }
 
 export default function PremiumNavbar({
 	brand = 'Flow State Striking',
-	tagline = 'STRUCTURE • POSITION • TIMING',
-	ctaLabel = 'Assessment',
-	ctaHref = '/assessment',
-	scheduleHref = '/schedule'
+	tagline = 'Kids • Teens • Adults',
+	ctaLabel = 'Text to Start',
+	ctaHref = 'sms:+19497852991',
+	startHref = '/schedule'
 }: {
 	brand?: string
 	tagline?: string
 	ctaLabel?: string
 	ctaHref?: string
-	scheduleHref?: string
+	startHref?: string
 }) {
 	const pathname = usePathname()
 	const prefersReducedMotion = usePrefersReducedMotion()
@@ -51,7 +52,6 @@ export default function PremiumNavbar({
 
 	const items = useMemo(() => NAV_ITEMS, [])
 
-	// Premium scroll state
 	useEffect(() => {
 		const onScroll = () => setScrolled(window.scrollY > 10)
 		onScroll()
@@ -59,10 +59,8 @@ export default function PremiumNavbar({
 		return () => window.removeEventListener('scroll', onScroll)
 	}, [])
 
-	// Close on route change
 	useEffect(() => setMenuOpen(false), [pathname])
 
-	// Lock body scroll when mobile menu is open
 	useEffect(() => {
 		if (!menuOpen) return
 		const original = document.body.style.overflow
@@ -72,7 +70,6 @@ export default function PremiumNavbar({
 		}
 	}, [menuOpen])
 
-	// ESC to close
 	useEffect(() => {
 		if (!menuOpen) return
 		const onKeyDown = (e: KeyboardEvent) => {
@@ -105,7 +102,6 @@ export default function PremiumNavbar({
 							scrolled ? 'h-14' : 'h-16'
 						)}
 					>
-						{/* Brand */}
 						<Link
 							href='/'
 							className='group inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60'
@@ -113,41 +109,7 @@ export default function PremiumNavbar({
 						>
 							<span className='relative grid place-items-center h-9 w-9 rounded-xl border border-white/10 bg-white/5'>
 								<span className='h-2.5 w-2.5 rounded-full bg-emerald-300/90' />
-								{/* Ring */}
-								<span
-									className={cx(
-										'pointer-events-none absolute inset-0 rounded-xl',
-										'ring-1 ring-white/5'
-									)}
-								/>
-								{/* Breathing glow (motion-safe) */}
-								<span
-									aria-hidden='true'
-									className={cx(
-										'pointer-events-none absolute inset-0 rounded-xl',
-										prefersReducedMotion
-											? 'opacity-0'
-											: 'opacity-100 motion-safe:animate-[pulse_3.2s_ease-in-out_infinite]'
-									)}
-									style={{
-										boxShadow: '0 0 0 0 rgba(52,211,153,0.0)'
-									}}
-								/>
-								{/* Micro gradient sweep (very subtle, motion-safe) */}
-								<span
-									aria-hidden='true'
-									className={cx(
-										'pointer-events-none absolute -inset-10 opacity-0',
-										prefersReducedMotion
-											? ''
-											: 'motion-safe:opacity-100 motion-safe:animate-[spin_10s_linear_infinite]'
-									)}
-									style={{
-										background:
-											'conic-gradient(from 180deg, rgba(52,211,153,0.10), rgba(255,255,255,0.04), rgba(52,211,153,0.10))',
-										filter: 'blur(14px)'
-									}}
-								/>
+								<span className='pointer-events-none absolute inset-0 rounded-xl ring-1 ring-white/5' />
 							</span>
 
 							<span className='flex flex-col leading-tight'>
@@ -158,9 +120,7 @@ export default function PremiumNavbar({
 							</span>
 						</Link>
 
-						{/* Desktop nav */}
 						<nav className='hidden md:flex items-center gap-3'>
-							{/* Main links (quiet) */}
 							<div className='flex items-center gap-1'>
 								{items.map((item) => {
 									const active = isActive(item.href)
@@ -176,7 +136,6 @@ export default function PremiumNavbar({
 											aria-current={active ? 'page' : undefined}
 										>
 											{item.label}
-											{/* Underline (premium + minimal) */}
 											<span
 												className={cx(
 													'absolute left-3 right-3 -bottom-0.5 h-px',
@@ -188,18 +147,16 @@ export default function PremiumNavbar({
 								})}
 							</div>
 
-							{/* Secondary link for paid users (quiet) */}
 							<Link
-								href={scheduleHref}
+								href={startHref}
 								className={cx(
 									'text-sm text-neutral-500 hover:text-neutral-300 transition',
 									'focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 rounded-lg px-2 py-2'
 								)}
 							>
-								Schedule
+								Get Started
 							</Link>
 
-							{/* CTA (serious) */}
 							<Link
 								href={ctaHref}
 								className={cx(
@@ -213,7 +170,6 @@ export default function PremiumNavbar({
 							</Link>
 						</nav>
 
-						{/* Mobile toggle */}
 						<button
 							type='button'
 							className={cx(
@@ -253,7 +209,6 @@ export default function PremiumNavbar({
 					</div>
 				</div>
 
-				{/* Mobile menu */}
 				<div
 					className={cx(
 						'md:hidden',
@@ -261,14 +216,12 @@ export default function PremiumNavbar({
 						menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
 					)}
 				>
-					{/* Backdrop */}
 					<button
 						aria-label='Close menu backdrop'
 						onClick={() => setMenuOpen(false)}
 						className='fixed inset-0 z-40 bg-neutral-950/60 backdrop-blur-sm'
 					/>
 
-					{/* Panel */}
 					<div
 						id='mobile-menu'
 						className='fixed left-0 right-0 top-16 z-50 mx-auto max-w-6xl px-5 sm:px-8'
@@ -298,21 +251,20 @@ export default function PremiumNavbar({
 									})}
 								</div>
 
-								{/* Secondary paid-user path */}
 								<div className='mt-2'>
 									<Link
-										href={scheduleHref}
+										href={startHref}
 										className={cx(
 											'flex items-center justify-between rounded-xl px-4 py-3 text-base',
 											'border border-white/10 bg-white/[0.02] text-neutral-200 hover:bg-white/[0.06] transition',
 											'focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60'
 										)}
 									>
-										<span>Schedule (Already paid)</span>
+										<span>Get Started</span>
 										<span className='text-neutral-600'>→</span>
 									</Link>
 								</div>
-								{/* CTA */}
+
 								<div className='mt-3'>
 									<Link
 										href={ctaHref}
@@ -329,7 +281,7 @@ export default function PremiumNavbar({
 
 								<div className='mt-3 px-1 pb-1'>
 									<p className='text-[11px] tracking-[0.18em] text-neutral-600 text-center'>
-										CLARITY • CONTROL • LONGEVITY
+										KIDS • TEENS • ADULTS
 									</p>
 								</div>
 							</div>

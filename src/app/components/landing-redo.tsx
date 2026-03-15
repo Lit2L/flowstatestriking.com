@@ -46,7 +46,6 @@ export default function LandingRedo() {
 					</div>
 				</div>
 			</section>
-
 			<section className='py-16 md:py-20'>
 				<div className='mx-auto max-w-5xl px-5 sm:px-8'>
 					<div className='grid md:grid-cols-3 gap-4'>
@@ -75,7 +74,6 @@ export default function LandingRedo() {
 					</div>
 				</div>
 			</section>
-
 			<section className='py-16 md:py-20 border-t border-white/5'>
 				<div className='mx-auto max-w-5xl px-5 sm:px-8'>
 					<div className='max-w-2xl'>
@@ -115,7 +113,6 @@ export default function LandingRedo() {
 					</div>
 				</div>
 			</section>
-
 			<section className='py-16 md:py-20 border-t border-white/5'>
 				<div className='mx-auto max-w-5xl px-5 sm:px-8'>
 					<div className='grid lg:grid-cols-[1.2fr_0.8fr] gap-6 items-start'>
@@ -191,7 +188,6 @@ export default function LandingRedo() {
 					</div>
 				</div>
 			</section>
-
 			<section className='py-16 md:py-20 border-t border-white/5'>
 				<div className='mx-auto max-w-5xl px-5 sm:px-8'>
 					<div className='rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10 text-center'>
@@ -212,32 +208,65 @@ export default function LandingRedo() {
 					</div>
 				</div>
 			</section>
-
 			<footer className='border-t border-white/5 py-10'>
-				<div className='mx-auto max-w-5xl px-5 sm:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6'>
+				<div className='mx-auto max-w-5xl px-5 sm:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8'>
+					{/* Brand */}
 					<div>
 						<div className='text-sm tracking-wide text-neutral-200'>Flow State Striking</div>
+
 						<div className='mt-2 text-xs tracking-[0.18em] text-neutral-500'>
 							COACHING @ WILLIAMS MMA
 						</div>
+
+						<div className='mt-3 text-sm text-neutral-400'>Fountain Valley, CA</div>
+
+						<div className='mt-3 text-sm text-neutral-400'>
+							Text or Call:{' '}
+							<a href='tel:+19497852991' className='text-neutral-200 hover:text-white transition'>
+								949-785-2991
+							</a>
+						</div>
 					</div>
 
+					{/* Navigation */}
 					<div className='flex flex-wrap gap-4 text-sm'>
+						<Link className='text-neutral-400 hover:text-neutral-200 transition' href='/method'>
+							Method
+						</Link>
+
 						<Link className='text-neutral-400 hover:text-neutral-200 transition' href='/training'>
 							Training
 						</Link>
+
 						<Link className='text-neutral-400 hover:text-neutral-200 transition' href='/pricing'>
 							Pricing
 						</Link>
+
 						<Link className='text-neutral-400 hover:text-neutral-200 transition' href='/about'>
 							About
 						</Link>
-						<Link className='text-neutral-400 hover:text-neutral-200 transition' href='/assessment'>
-							Assessment
-						</Link>
+					</div>
+
+					{/* Social */}
+					<div className='flex flex-col gap-2 text-sm'>
+						<a
+							href='https://instagram.com/flowstate_striking'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='text-neutral-400 hover:text-neutral-200 transition'
+						>
+							Instagram
+						</a>
+
+						<a
+							href='sms:+19497852991'
+							className='text-neutral-400 hover:text-neutral-200 transition'
+						>
+							Text to Start
+						</a>
 					</div>
 				</div>
-			</footer>
+			</footer>{' '}
 		</div>
 	)
 }
