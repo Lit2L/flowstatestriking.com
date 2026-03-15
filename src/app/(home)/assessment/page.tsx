@@ -1,4 +1,5 @@
-// app/assessment/page.tsx
+'use client'
+
 import Link from 'next/link'
 
 function cx(...classes: Array<string | false | null | undefined>) {
@@ -65,147 +66,159 @@ function SecondaryButton({
 	)
 }
 
-function Card({
-	kicker,
-	title,
-	children
-}: {
-	kicker?: string
-	title: string
-	children: React.ReactNode
-}) {
+function SimpleCard({ title, children }: { title: string; children: React.ReactNode }) {
 	return (
 		<div className='rounded-2xl border border-white/10 bg-white/[0.03] p-6'>
-			{kicker ? (
-				<div className='text-xs font-semibold tracking-[0.22em] text-white/55'>{kicker}</div>
-			) : null}
-			<div className='mt-1 text-base font-semibold text-white/90'>{title}</div>
+			<h3 className='text-base font-semibold text-white/90'>{title}</h3>
 			<div className='mt-2 text-sm leading-relaxed text-white/70'>{children}</div>
 		</div>
 	)
 }
 
 export default function AssessmentPage() {
-	/**
-	 * Calendly + Stripe combo (Paid Event)
-	 * Replace with your Calendly event link that has Stripe payments enabled.
-	 * Example: https://calendly.com/flowstate_striking/assessment
-	 */
-	const CALENDLY_URL = 'https://calendly.com/flowstatestriking/flow-state-assessment'
-
-	// Optional: support / contact route (adjust to your site)
 	const CONTACT_URL = '/contact'
+	const PHONE_HREF = 'tel:+19497852991'
+	const SMS_HREF = 'sms:+19497852991'
 
 	return (
 		<main className='relative min-h-screen bg-[#070A0F] text-white'>
-			{/* Background */}
 			<div aria-hidden className='pointer-events-none absolute inset-0 overflow-hidden'>
 				<div className='absolute -top-24 left-1/2 h-[520px] w-[980px] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl' />
-				<div className='absolute top-[40%] right-[-10%] h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-3xl' />
 				<div className='absolute inset-0 bg-[radial-gradient(circle_at_30%_10%,rgba(255,255,255,0.06),transparent_45%),radial-gradient(circle_at_70%_30%,rgba(16,185,129,0.10),transparent_40%),radial-gradient(circle_at_50%_90%,rgba(34,211,238,0.08),transparent_45%)]' />
 			</div>
 
-			<div className='relative z-10 mx-auto max-w-6xl px-4 py-10 md:py-16'>
-				{/* HERO */}
-				<div className='max-w-3xl'>
-					<p className='text-xs font-semibold tracking-[0.22em] text-white/60'>
-						FLOW STATE ASSESSMENT
-					</p>
+			<div className='relative z-10 mx-auto max-w-5xl px-4 py-12 md:py-20'>
+				<section className='max-w-3xl'>
+					<p className='text-xs font-semibold tracking-[0.22em] text-white/60'>ASSESSMENT</p>
 
 					<h1 className='mt-6 text-3xl font-semibold leading-tight md:text-5xl'>
-						Clarity before more training
+						Start with a private assessment.
 					</h1>
 
-					<p className='mt-6 text-base leading-relaxed text-white/70 md:text-md'>
-						A paid, one-on-one session designed to evaluate posture, stance, balance, and striking
-						mechanics under light pressure.
+					<p className='mt-6 text-base leading-relaxed text-white/70 md:text-lg'>
+						A simple first step for kids, teens, and adults who want to train the right way. We look
+						at your level, movement, and goals, then give you a clear recommendation for what to do
+						next.
 					</p>
 
-					<p className='mt-6 text-base leading-relaxed text-white/70 md:text-md'>
-						This is <span className='text-white/85'>not a workout</span> and not a sales session.
-						It’s a focused evaluation that gives you a clear next step—whether you continue training
-						with me or not.
-					</p>
+					<div className='mt-8 flex flex-wrap gap-3 text-xs tracking-[0.16em] text-white/55'>
+						{['KIDS', 'TEENS', 'ADULTS', 'PRIVATE 1-ON-1'].map((item) => (
+							<span
+								key={item}
+								className='rounded-full border border-white/10 bg-white/[0.03] px-3 py-2'
+							>
+								{item}
+							</span>
+						))}
+					</div>
 
-					<div className='mt-12 flex flex-col gap-3 sm:flex-row'>
-						<PrimaryButton href={CALENDLY_URL} external>
-							Book Assessment (Pay to Confirm)
+					<div className='mt-10 flex flex-col gap-3 sm:flex-row'>
+						<PrimaryButton href={SMS_HREF} external>
+							Text to Get Started
 						</PrimaryButton>
-
-						<SecondaryButton href={CONTACT_URL}>Questions? Contact me</SecondaryButton>
+						<SecondaryButton href={PHONE_HREF} external>
+							Call for Training Info
+						</SecondaryButton>
 					</div>
 
-					<p className='mt-4 text-xs text-white/55'>
-						You’ll choose a time first. Payment happens during booking to confirm the session.
+					<p className='mt-4 text-sm text-white/55'>
+						Reach out by text or call and I&apos;ll help you choose the right next step.
 					</p>
-				</div>
+				</section>
 
-				{/* GRID */}
-				<div className='mt-24 grid gap-4 md:grid-cols-3'>
-					<Card kicker='WHAT WE LOOK AT' title='Structure & mechanics'>
-						<p>Posture, balance, alignment, and how efficiently force moves through your body.</p>
-					</Card>
+				<section className='mt-16 grid gap-4 md:grid-cols-3'>
+					<SimpleCard title='For beginners and growing students'>
+						Great for people who want a clean starting point, more confidence, and real direction.
+					</SimpleCard>
 
-					<Card kicker='UNDER LIGHT PRESSURE' title='Distance & readiness'>
-						<p>How you manage space and stay defensively responsible as pace increases.</p>
-					</Card>
+					<SimpleCard title='Clear next steps'>
+						You will leave knowing what level you are at, what needs work first, and the best way to
+						move forward.
+					</SimpleCard>
 
-					<Card kicker='OUTCOME' title='A clear direction'>
-						<p>
-							You leave with clarity on what to fix first, what to stop forcing, and the most
-							effective path forward.
-						</p>
-					</Card>
-				</div>
+					<SimpleCard title='No pressure'>
+						This is not a hard sparring session and not a sales pitch. It is a focused coaching
+						session designed to help you start well.
+					</SimpleCard>
+				</section>
 
-				{/* PROCESS */}
-				<div className='mt-24 rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-10'>
-					<h2 className='text-xl font-semibold md:text-2xl'>How it works</h2>
+				<section className='mt-16 rounded-3xl border border-white/10 bg-white/[0.03] p-7 md:p-10'>
+					<h2 className='text-2xl font-semibold'>What happens in the assessment</h2>
 
-					<ol className='mt-6 space-y-3 text-sm text-white/70 md:text-base'>
-						<li>1. Choose an available time</li>
-						<li>2. Pay during booking to confirm</li>
-						<li>3. Attend the session and get clear direction</li>
-					</ol>
+					<div className='mt-8 grid gap-4 md:grid-cols-3'>
+						{[
+							{
+								step: '1',
+								title: 'We meet and assess',
+								desc: 'We go over experience, goals, stance, movement, and basic technique.'
+							},
+							{
+								step: '2',
+								title: 'You get coached',
+								desc: 'You will be guided through simple drills so I can see what will help you most.'
+							},
+							{
+								step: '3',
+								title: 'You get a plan',
+								desc: 'I recommend the best next step for you, whether that is kids, teens, adult classes, or private training.'
+							}
+						].map((item) => (
+							<div
+								key={item.step}
+								className='rounded-2xl border border-white/10 bg-white/[0.02] p-5'
+							>
+								<div className='text-[10px] font-semibold tracking-[0.22em] text-emerald-400'>
+									STEP {item.step}
+								</div>
+								<div className='mt-2 text-sm font-semibold text-white/90'>{item.title}</div>
+								<p className='mt-2 text-sm text-white/65'>{item.desc}</p>
+							</div>
+						))}
+					</div>
+				</section>
 
-					<div className='mt-8 grid gap-4 md:grid-cols-2'>
-						<div className='rounded-2xl border border-white/10 bg-white/[0.02] p-5'>
-							<div className='text-sm font-semibold text-white/85'>What’s included</div>
-							<ul className='mt-3 space-y-1 text-sm text-white/65'>
-								<li>• 1 private assessment session</li>
-								<li>• Movement + stance evaluation</li>
-								<li>• Light technical exchange (no hard sparring)</li>
-								<li>• Clear recommendation for next steps</li>
-							</ul>
-						</div>
-
-						<div className='rounded-2xl border border-white/10 bg-white/[0.02] p-5'>
-							<div className='text-sm font-semibold text-white/85'>What to bring</div>
-							<ul className='mt-3 space-y-1 text-sm text-white/65'>
-								<li>• Comfortable training clothes</li>
-								<li>• Water</li>
-								<li>• Hand wraps (optional)</li>
-								<li>• Gloves (optional)</li>
-							</ul>
-						</div>
+				<section className='mt-16 grid gap-4 md:grid-cols-2'>
+					<div className='rounded-2xl border border-white/10 bg-white/[0.03] p-6'>
+						<h3 className='text-base font-semibold text-white/90'>What&apos;s included</h3>
+						<ul className='mt-4 space-y-2 text-sm text-white/70'>
+							<li>• 1 private assessment session</li>
+							<li>• Movement and technique evaluation</li>
+							<li>• Coaching and live feedback</li>
+							<li>• Clear recommendation for next steps</li>
+						</ul>
 					</div>
 
-					<div className='mt-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5'>
-						<div className='text-sm font-semibold text-white/85'>Cancellation & rescheduling</div>
-						<p className='mt-3 text-sm text-white/65'>
-							You can reschedule or cancel up to 24 hours in advance using the link in your
-							confirmation email. Late cancellations are non-refundable.
-						</p>
+					<div className='rounded-2xl border border-white/10 bg-white/[0.03] p-6'>
+						<h3 className='text-base font-semibold text-white/90'>What to bring</h3>
+						<ul className='mt-4 space-y-2 text-sm text-white/70'>
+							<li>• Comfortable training clothes</li>
+							<li>• Water</li>
+							<li>• Hand wraps if you have them</li>
+							<li>• Gloves if you have them</li>
+						</ul>
 					</div>
-				</div>
+				</section>
 
-				{/* FINAL CTA */}
-				<div className='mt-20 flex flex-col gap-3 sm:flex-row'>
-					<PrimaryButton href={CALENDLY_URL} external>
-						Book Your Assessment
-					</PrimaryButton>
-					<SecondaryButton href='/pricing'>View pricing</SecondaryButton>
-				</div>
+				<section className='mt-16 rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-10 text-center'>
+					<h2 className='text-2xl md:text-3xl font-semibold'>Ready to get started?</h2>
+					<p className='mt-4 mx-auto max-w-2xl text-white/70 leading-relaxed'>
+						Text or call to ask questions, talk through your goals, and find the right training
+						path.
+					</p>
+
+					<div className='mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center'>
+						<PrimaryButton href={SMS_HREF} external>
+							Text to Get Started
+						</PrimaryButton>
+						<SecondaryButton href={PHONE_HREF} external>
+							Call for Training Info
+						</SecondaryButton>
+					</div>
+
+					<p className='mt-5 text-xs text-white/50'>
+						Best for kids, teens, adults, and anyone looking for a clear first step.
+					</p>
+				</section>
 			</div>
 		</main>
 	)
