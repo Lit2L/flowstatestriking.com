@@ -175,7 +175,7 @@ export default function LandingRedo() {
 
 							<div className='mt-6 space-y-3 text-sm text-neutral-400'>
 								<div className='rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3'>
-									Coaching at Williams MMA
+									<Link href='https://www.williamsmma.com/'>Coaching at Williams MMA</Link>
 								</div>
 								<div className='rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3'>
 									Private coaching available
@@ -216,6 +216,7 @@ export default function LandingRedo() {
 
 						<div className='mt-2 text-xs tracking-[0.18em] text-neutral-500'>
 							COACHING @ WILLIAMS MMA
+							<p>8780 Warner Ave, suite 7 Fountain Valley, CA 92708</p>
 						</div>
 
 						<div className='mt-3 text-sm text-neutral-400'>Fountain Valley, CA</div>
