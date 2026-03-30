@@ -22,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<main className='pt-16'>{children}</main>
 					<Analytics />
 				</Provider>
+				<Analytics />
 			</body>
 		</html>
 	)
